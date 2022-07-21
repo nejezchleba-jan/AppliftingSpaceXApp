@@ -1,0 +1,84 @@
+<resources>
+    <string name="app_name">AppliftingSpaceX</string>
+    <string name="UNIT_BILLION">billion</string>
+    <string name="UNIT_MILLION">million</string>
+    <string name="UNIT_KG">kg</string>
+
+    <string name="SCREEN_LAUNCHES">Launches</string>
+    <string name="SCREEN_ROCKETS">Rockets</string>
+    <string name="SCREEN_DETAILS">Rocket details</string>
+    <string name="SCREEN_COMPANY">Company</string>
+    <string name="SCREEN_SPLASH">Splash</string>
+    <string name="SCREEN_NEXT_LAUNCH">Next launch</string>
+
+    <string name="COMPANY_CEO">CEO</string>
+    <string name="COMPANY_COO">COO</string>
+    <string name="COMPANY_FOUNDED">Founded</string>
+    <string name="COMPANY_VALUATION">Valuation</string>
+    <string name="COMPANY_EMPLOYEES">Employees</string>
+    <string name="COMPANY_HQ">HQ</string>
+    <string name="COMPANY_SUMMARY">Summary</string>
+
+    <string name="ROCKET_MORE">Tap for more</string>
+    <string name="ROCKET_GALLERY">Gallery</string>
+    <string name="ROCKET_LEARN_MORE">Find out more</string>
+    <string name="ROCKET_NAME">Name</string>
+    <string name="ROCKET_FIRST_FLIGHT">First flight</string>
+    <string name="ROCKET_HEIGHT">Height</string>
+    <string name="ROCKET_DIAMETER">Diameter</string>
+    <string name="ROCKET_MASS">Mass</string>
+    <string name="ROCKET_STAGES">Stages</string>
+    <string name="ROCKET_BOOSTERS">Boosters</string>
+    <string name="ROCKET_COST_PER_LAUNCH">Cost per launch</string>
+    <string name="ROCKET_DESCRIPTION">Description</string>
+    <string name="ROCKET_SUCCESS">Success rate</string>
+    <string name="ROCKET_PAYLOADS">Payloads</string>
+
+    <string name="FILTER">Filter</string>
+    <string name="FILTER_LAUNCH_TIMEFRAME">Launch timeframe</string>
+    <string name="FILTER_LAUNCH_FROM">From</string>
+    <string name="FILTER_LAUNCH_TO">To</string>
+
+    <string name="APP_ERROR_MSG">Something went wrong.</string>
+    <string name="APP_ERROR_DATE_MSG">The date interval is invalid.</string>
+    <string name="APP_RETRY_BTN">Try again</string>
+
+    <string name="DATE_FORMAT_DISPLAYED">dd/MM/yyyy</string>
+
+    <string name="BUTTON_OK">OK</string>
+    <string name="BUTTON_BACK">Back</string>
+    <string name="BUTTON_APPLY">Apply</string>
+    <string name="BUTTON_RESET">Reset</string>
+    <string name="BUTTON_CANCEL">Cancel</string>
+
+    <string name="LAUNCH_DETAILS">Details</string>
+    <string name="LAUNCH">Launch</string>
+    <string name="LAUNCH_NOTE">Note</string>
+    <string name="LAUNCH_RESULT">Launch result</string>
+    <string name="LAUNCH_ROCKET">Rocket</string>
+    <string name="LAUNCH_SORT">Sort by date</string>
+    <string name="LAUNCH_SORT_DESC">Descending</string>
+    <string name="LAUNCH_SORT_ASC">Ascending</string>
+    <string name="NO_LAUNCHES_FOUND">There are no launches for your filter.</string>
+    <string name="LAUNCH_LOCAL_DATE">Local launch time</string>
+    <string name="LAUNCH_NAME">Name</string>
+    <string name="LAUNCH_EMPTY">No scheduled launch.</string>
+
+    <string name="MISC_ANY">Any</string>
+    <string name="MISC_SORRY">Sorry!</string>
+
+    <string name="DESC_MENU">Menu</string>
+    <string name="DESC_BACK">Back</string>
+    <string name="DESC_DROPDOWNARROW">Dropdown arrow</string>
+    <string name="DESC_SPACEX">SpaceX</string>
+    <string name="DESC_SPACEX_DRAWER">SpaceX drawer thumbnail</string>
+    <string name="DESC_ROCKET_IMG">Rocket image</string>
+    <string name="DESC_INFO">Info</string>
+    <string name="DESC_FILTER">Filter</string>
+    <string name="DESC_PATCH_IMG">Path image</string>
+    <string name="DESC_LINK_WIKI">Wikipedia link</string>
+    <string name="DESC_LINK_WEBCAST">Webcast link</string>
+    <string name="DESC_LINK_WEBSITE">Website link</string>
+    <string name="DESC_LINK_TWITTER">Twitter link</string>
+    <string name="DESC_LINK_FLICKR">Flickr link</string>
+</resources>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.AppliftingSpaceX" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:statusBarColor">@color/primary</item>
+        <item name="android:datePickerDialogTheme">@style/AppTheme.DatePickerDialog</item>
+
+    </style>
+
+    <style name="AppTheme.DatePickerDialog" parent="android:Theme.Material.Light.Dialog">
+        <item name="android:colorAccent">@color/primary</item>
+        <item name="android:colorControlActivated">@color/primary</item>
+        <item name="android:buttonBarPositiveButtonStyle">@style/AppTheme.Alert.Button.Positive</item>
+        <item name="android:buttonBarNegativeButtonStyle">@style/AppTheme.Alert.Button.Negative</item>
+        <item name="android:buttonBarNeutralButtonStyle">@style/AppTheme.Alert.Button.Neutral</item>
+    </style>
+
+    <style name="AppTheme.Alert.Button.Positive" parent="android:Widget.Material.ActionButton">
+        <item name="android:textColor">@color/primary</item>
+    </style>
+
+    <style name="AppTheme.Alert.Button.Negative" parent="android:Widget.Material.ActionButton">
+        <item name="android:textColor">@color/primary</item>
+    </style>
+
+    <style name="AppTheme.Alert.Button.Neutral" parent="android:Widget.Material.ActionButton">
+        <item name="android:textColor">@color/primary</item>
+    </style>
+</resources>
