@@ -2,6 +2,7 @@ package cz.jannejezchleba.appliftingspacex.data.service
 
 import cz.jannejezchleba.appliftingspacex.data.model.*
 import cz.jannejezchleba.appliftingspacex.data.paging.PaginatedLaunches
+import okhttp3.CacheControl
 import retrofit2.Response
 import retrofit2.http.*
 
@@ -26,4 +27,7 @@ interface SpaceXApiService {
     @GET("v5/launches/next")
     suspend fun getNextLaunch(): Response<NextLaunch>
 
+    @GET("v5/launches/next")
+    @Headers("Cache-Control: no-cache")
+    suspend fun getNextLaunchWithoutCache(): Response<NextLaunch>
 }

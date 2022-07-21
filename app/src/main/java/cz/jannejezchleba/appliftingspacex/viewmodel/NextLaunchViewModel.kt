@@ -9,6 +9,7 @@ import cz.jannejezchleba.appliftingspacex.data.model.NextLaunch
 import cz.jannejezchleba.appliftingspacex.data.repository.SpaceXRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import java.time.LocalDateTime
 import javax.inject.Inject
 
 @HiltViewModel
@@ -24,6 +25,9 @@ class NextLaunchViewModel @Inject constructor(
         viewModelScope.launch {
             try {
                 nextLaunch = spaceXRepository.getNextLaunch()
+                if (nextLaunch != null && nextLaunch!!.getLaunchLocalDateTime().isBefore(LocalDateTime.now())) {
+                    nextLaunch = spaceXRepository.getNextLaunch(true)
+                }
                 isNextScheduled = nextLaunch != null
             } catch (e: Exception) {
                 isError = true

@@ -6,7 +6,11 @@ import java.util.concurrent.TimeUnit
 
 class CachingInterceptor : Interceptor {
     override fun intercept(chain: Interceptor.Chain): okhttp3.Response {
-        val response = chain.proceed(chain.request())
+        val request = chain.request()
+        val response = chain.proceed(request)
+
+        val shouldUseCache = request.header("Cache-Control") != "no-cache"
+        if (!shouldUseCache) return response
 
         val cacheControl = CacheControl.Builder()
             .onlyIfCached()

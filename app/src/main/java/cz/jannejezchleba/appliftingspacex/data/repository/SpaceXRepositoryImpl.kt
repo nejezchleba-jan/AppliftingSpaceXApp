@@ -4,6 +4,7 @@ import cz.jannejezchleba.appliftingspacex.data.model.*
 import cz.jannejezchleba.appliftingspacex.data.network.NetworkException
 import cz.jannejezchleba.appliftingspacex.data.paging.PaginatedLaunches
 import cz.jannejezchleba.appliftingspacex.data.service.SpaceXApiService
+import okhttp3.CacheControl
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -65,8 +66,12 @@ class SpaceXRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun getNextLaunch(): NextLaunch {
-        val result = api.getNextLaunch()
+    override suspend fun getNextLaunch(forceRequest: Boolean): NextLaunch {
+        val result = if (forceRequest) {
+            api.getNextLaunchWithoutCache()
+        } else {
+            api.getNextLaunch()
+        }
         if(result.isSuccessful) {
             return result.body() ?: throw NetworkException("No body in response.", result.code())
         }  else {
