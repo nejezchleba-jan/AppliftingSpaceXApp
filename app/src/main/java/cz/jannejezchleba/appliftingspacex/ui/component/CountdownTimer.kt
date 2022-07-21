@@ -18,7 +18,12 @@ fun CountDownTimer(
     totalTime: Long
 ) {
     var currentTime by remember {
-        mutableStateOf(totalTime)
+        if (totalTime <= 0) {
+            mutableStateOf(0)
+        } else {
+            mutableStateOf(totalTime)
+        }
+
     }
 
     LaunchedEffect(Unit) {
