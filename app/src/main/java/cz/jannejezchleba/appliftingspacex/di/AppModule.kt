@@ -5,6 +5,7 @@ import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import cz.jannejezchleba.appliftingspacex.BuildConfig
 import cz.jannejezchleba.appliftingspacex.data.model.FilterQuery
+import cz.jannejezchleba.appliftingspacex.data.network.CachingInterceptor
 import cz.jannejezchleba.appliftingspacex.data.network.CustomFilterQuerySerializer
 import cz.jannejezchleba.appliftingspacex.data.repository.SpaceXRepository
 import cz.jannejezchleba.appliftingspacex.data.repository.SpaceXRepositoryImpl
@@ -15,8 +16,6 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.Cache
-import okhttp3.CacheControl
-import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -57,28 +56,8 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun provideNetworkCachingInterceptor(): Interceptor {
-        return Interceptor { chain ->
-            val response = chain.proceed(chain.request())
-
-            //Cache all POST requests for shorter duration (Launches queries)
-            //Launches have a greater chance to change in shorter time frame
-            val cacheControl = if (chain.request().method == "POST") {
-                CacheControl.Builder()
-                    .onlyIfCached()
-                    .maxAge(15, TimeUnit.MINUTES)
-                    .build()
-            } else {
-                CacheControl.Builder()
-                    .onlyIfCached()
-                    .maxAge(1, TimeUnit.DAYS)
-                    .build()
-            }
-
-            response.newBuilder()
-                .header("Cache-Control", cacheControl.toString())
-                .build()
-        }
+    fun provideNetworkCachingInterceptor(): CachingInterceptor {
+        return CachingInterceptor()
     }
 
     @Singleton
@@ -86,7 +65,7 @@ object AppModule {
     fun provideOkHttpClient(
         appCache: Cache,
         loggingInterceptor: HttpLoggingInterceptor,
-        cachingInterceptor: Interceptor
+        cachingInterceptor: CachingInterceptor
     ): OkHttpClient {
         return OkHttpClient.Builder()
             .cache(appCache)
