@@ -30,4 +30,9 @@ interface SpaceXApiService {
     @GET("v5/launches/next")
     @Headers("Cache-Control: no-cache")
     suspend fun getNextLaunchWithoutCache(): Response<NextLaunch>
+
+    @GET("v5/launches/upcoming")
+    suspend fun getUpcomingLaunches(): Response<List<NextLaunch>>
+
+
 }

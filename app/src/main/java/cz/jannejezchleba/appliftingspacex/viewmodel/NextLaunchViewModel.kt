@@ -24,10 +24,23 @@ class NextLaunchViewModel @Inject constructor(
         isError = false
         viewModelScope.launch {
             try {
-                nextLaunch = spaceXRepository.getNextLaunch()
-                if (nextLaunch != null && nextLaunch!!.getLaunchLocalDateTime().isBefore(LocalDateTime.now())) {
-                    nextLaunch = spaceXRepository.getNextLaunch(true)
-                }
+                val nextFoundLaunch = spaceXRepository.getNextLaunch()
+                nextLaunch =
+                    if (nextFoundLaunch.getLaunchLocalDateTime().isBefore(LocalDateTime.now())) {
+                        //Check if launch already past in cache and force request for new
+                        val nextFoundLaunchWithoutCache = spaceXRepository.getNextLaunch(true)
+                        if (nextFoundLaunch.id == nextFoundLaunchWithoutCache.id) {
+                            //If API wrongly returns same already past launch take next from upcoming
+                            spaceXRepository.getUpcomingLaunches().first {
+                                it.getLaunchLocalDateTime()
+                                    .isAfter(nextFoundLaunchWithoutCache.getLaunchLocalDateTime())
+                            }
+                        } else {
+                            nextFoundLaunchWithoutCache
+                        }
+                    } else {
+                        nextFoundLaunch
+                    }
                 isNextScheduled = nextLaunch != null
             } catch (e: Exception) {
                 isError = true

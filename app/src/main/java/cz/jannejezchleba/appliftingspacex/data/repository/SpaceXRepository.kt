@@ -15,4 +15,6 @@ interface SpaceXRepository {
     suspend fun getFilteredLaunches(page: Int, limit: Int, filter: LaunchesFilter) : PaginatedLaunches
 
     suspend fun getNextLaunch(forceRequest: Boolean = false) : NextLaunch
+
+    suspend fun getUpcomingLaunches() : List<NextLaunch>
 }

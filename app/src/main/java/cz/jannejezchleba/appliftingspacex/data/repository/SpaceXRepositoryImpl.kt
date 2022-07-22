@@ -78,4 +78,13 @@ class SpaceXRepositoryImpl @Inject constructor(
             throw NetworkException(result.errorBody().toString(), result.code())
         }
     }
+
+    override suspend fun getUpcomingLaunches(): List<NextLaunch> {
+        val result = api.getUpcomingLaunches()
+        if(result.isSuccessful) {
+            return result.body() ?: throw NetworkException("No body in response.", result.code())
+        }  else {
+            throw NetworkException(result.errorBody().toString(), result.code())
+        }
+    }
 }
