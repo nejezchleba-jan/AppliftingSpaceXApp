@@ -1,10 +1,7 @@
 package cz.jannejezchleba.appliftingspacex.ui.launch
 
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.Divider
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -46,28 +43,43 @@ fun NextLaunchInfo(launch: NextLaunch) {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
 
-        Text(text = stringResource(id = R.string.LAUNCH_NAME), style = CustomMaterialTheme.typography.subtitle1)
+        Text(
+            text = stringResource(id = R.string.LAUNCH_NAME),
+            style = CustomMaterialTheme.typography.subtitle1
+        )
         Text(text = launch.name, style = CustomMaterialTheme.typography.h4)
         Divider()
         CountDownTimer(totalTime = timeToLaunch)
         Divider()
-        Text(text = stringResource(id = R.string.LAUNCH_LOCAL_DATE), style = CustomMaterialTheme.typography.subtitle1)
-        Text(text = launch.getFormattedLaunchDate(), style = CustomMaterialTheme.typography.h5, textAlign = TextAlign.Center)
+        Text(
+            text = stringResource(id = R.string.LAUNCH_LOCAL_DATE),
+            style = CustomMaterialTheme.typography.subtitle1
+        )
+        Text(
+            text = launch.getFormattedLaunchDate(),
+            style = CustomMaterialTheme.typography.h5,
+            textAlign = TextAlign.Center
+        )
         Divider()
         if (launch.links.linksArePresent()) {
             LaunchSocials(launch.links)
             Divider()
         }
-        AsyncImage(
-            model = ImageRequest.Builder(LocalContext.current)
-                .data(launch.links.patch?.large)
-                .crossfade(true)
-                .build(),
-            placeholder = placeholder,
-            fallback = placeholder,
-            contentDescription = stringResource(id = R.string.DESC_PATCH_IMG),
-            contentScale = ContentScale.Fit,
-            modifier = Modifier.clip(CustomMaterialTheme.shapes.medium),
-        )
+        BoxWithConstraints(
+            modifier = Modifier.fillMaxSize(),
+            contentAlignment = Alignment.Center
+        ) {
+            AsyncImage(
+                model = ImageRequest.Builder(LocalContext.current)
+                    .data(launch.links.patch?.large)
+                    .crossfade(true)
+                    .build(),
+                placeholder = placeholder,
+                fallback = placeholder,
+                contentDescription = stringResource(id = R.string.DESC_PATCH_IMG),
+                contentScale = ContentScale.Fit,
+                modifier = Modifier.clip(CustomMaterialTheme.shapes.medium),
+            )
+        }
     }
 }

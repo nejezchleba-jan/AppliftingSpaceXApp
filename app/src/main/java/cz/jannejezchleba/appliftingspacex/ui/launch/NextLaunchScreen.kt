@@ -35,7 +35,7 @@ fun NextLaunchScreen(
         } else if (viewModel.nextLaunch != null && viewModel.isNextScheduled) {
             NextLaunchInfo(viewModel.nextLaunch!!)
         } else if (viewModel.isNextScheduled) {
-            EmptyItem(emptyText = stringResource(id = R.string.LAUNCH_EMPTY))
+            EmptyItem(Modifier.fillMaxSize(), emptyText = stringResource(id = R.string.LAUNCH_EMPTY))
         } else {
             LoadingItem(Modifier.fillMaxSize())
         }

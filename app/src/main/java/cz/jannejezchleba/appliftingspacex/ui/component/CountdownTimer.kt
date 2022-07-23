@@ -35,7 +35,7 @@ fun CountDownTimer(
 
     Box(
         modifier = Modifier
-            .fillMaxWidth(0.75F)
+            .fillMaxWidth()
             .border(
                 1.dp,
                 color = CustomMaterialTheme.colors.secondary,
